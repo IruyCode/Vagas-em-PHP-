@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-    Class Vaga{
+use \App\Db\Database;
+
+Class Vaga{
 
         /**
          * indentificador único da vaga 
@@ -24,7 +26,8 @@ namespace App\Entity;
             // DEFINIR A DATA 
                 $this->data = date('y-m-d H:i:s'); // forma a data em formato americano para inserir no banco de dados 
             // INSERIR A VAGA NO BANCO 
-                
+                $obDatabase = new Database('vagas');
+                print_r($obDatabase);exit;
             // ATRIBUIR O ID DA NA INSTANCIA
 
             // RETORNAR SUCESSO

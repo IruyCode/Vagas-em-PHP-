@@ -7,13 +7,13 @@ use PDOException;
 
 Class Database {
         // *** Conexao com o banco de dados ***
-        const HOST = 'localhost';
+        const HOST = 'Localhost';
         // *NOME DO BANCO DE DADOS **
-        const NAME = 'Vz_vagas';
+        const NAME = 'vz_vagas';
         // Nome do user BANCO DE DADOS
         const User = 'root';
         // SENHA
-        const PASS = '';
+        const PASS = 'root';
 
         // Nome da tabela a ser manipulada 
         private $table;
@@ -30,6 +30,7 @@ Class Database {
         private function setConnection(){
             try{
                 $this->connection = new PDO('mysql:host=' .self::HOST.';dbname=' .self::NAME, self::PASS);
+                $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e){
                 die('ERROR:'.$e->getMessage());
             }
