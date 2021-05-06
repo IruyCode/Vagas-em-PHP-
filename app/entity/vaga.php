@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use \App\Db\Database;
-
+use  \PDO;
 Class Vaga{
 
         /**
@@ -29,13 +29,25 @@ Class Vaga{
                 $obDatabase = new Database('vagas');
             // echo "<pre>";    print_r($obDatabase); echo " </pre>" ;exit;
                $this->id = $obDatabase ->insert([
-                            'titulo' => $this->titulo,
+                            'titulo'    => $this->titulo,
                             'descricao' => $this->descricao,
-                            'ativo' => $this->ativo,
-                            'data' => $this->data
+                            'ativo'     => $this->ativo,
+                            'data'      => $this->data
                         ]);
             // RETORNAR SUCESSO
             return true ;
+        }
+
+        /**
+         * Métodos responsável por obter as vagas do bando de dados 
+         * @param string $where 
+         * @param string $order
+         * @param string $limit
+         * @return array
+         */
+        public static function getVaga($where =null, $order = null, $limit = null){
+            return (new Database('vagas'))->select($where,$order,$limit)
+                                          ->fetchALL(PDO::FETCH_CLASS,self::class);
         }
 
     }
