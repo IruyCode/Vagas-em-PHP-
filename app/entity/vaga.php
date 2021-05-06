@@ -27,10 +27,15 @@ Class Vaga{
                 $this->data = date('y-m-d H:i:s'); // forma a data em formato americano para inserir no banco de dados 
             // INSERIR A VAGA NO BANCO 
                 $obDatabase = new Database('vagas');
-                print_r($obDatabase);exit;
-            // ATRIBUIR O ID DA NA INSTANCIA
-
+            // echo "<pre>";    print_r($obDatabase); echo " </pre>" ;exit;
+               $this->id = $obDatabase ->insert([
+                            'titulo' => $this->titulo,
+                            'descricao' => $this->descricao,
+                            'ativo' => $this->ativo,
+                            'data' => $this->data
+                        ]);
             // RETORNAR SUCESSO
+            return true ;
         }
 
     }

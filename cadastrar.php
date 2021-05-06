@@ -11,6 +11,8 @@
            $obVaga->ativo     = $_POST['ativo'];
             $obVaga->cadastrar();
          
+            header('location:index.php?status=success');
+            exit;
         }
 
     include __DIR__.'/includes/hearder.php';
