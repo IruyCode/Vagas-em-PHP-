@@ -3,7 +3,7 @@
 
     use \App\Entity\Vaga;
 
-    $vagas = Vaga::getVaga();
+    $vagas = Vaga::getVagaS();
 
     include __DIR__.'/includes/hearder.php';
     include __DIR__.'/includes/listagem.php';

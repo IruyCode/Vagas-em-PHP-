@@ -45,9 +45,17 @@ Class Vaga{
          * @param string $limit
          * @return array
          */
-        public static function getVaga($where =null, $order = null, $limit = null){
+        public static function getVagas($where =null, $order = null, $limit = null){
             return (new Database('vagas'))->select($where,$order,$limit)
                                           ->fetchALL(PDO::FETCH_CLASS,self::class);
+        }
+        /**
+         * Método responsável por buscar uma vaga com base no seu ID
+         * @param integer
+         * @return Vaga
+         */
+        public static function getVaga($id){
+
         }
 
     }
