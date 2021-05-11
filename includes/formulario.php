@@ -4,7 +4,7 @@
             <button class="btn btn-success">Voltar</button>
         </a>
     </section>
-        <h2 class= "mt-3">Cadastras vaga</h2>
+        <h2 class= "mt-3"><?TITLE?></h2>
 
             <form method= "post">
 

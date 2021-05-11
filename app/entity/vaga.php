@@ -38,7 +38,7 @@ Class Vaga{
             return true ;
         }
 
-        /**
+        /** 
          * Métodos responsável por obter as vagas do bando de dados 
          * @param string $where 
          * @param string $order
@@ -55,7 +55,8 @@ Class Vaga{
          * @return Vaga
          */
         public static function getVaga($id){
-
+            return (new Database('vagas'))->select(' id = ' .$id)
+                                          -> fetchObject(self::class)  ;
         }
 
     }
