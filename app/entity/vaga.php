@@ -37,6 +37,17 @@ Class Vaga{
             // RETORNAR SUCESSO
             return true ;
         }
+        /**  Metodo responsável por atualizar a Vaga no BANCO
+         *  @return bollean
+        */
+        public function atualizar(){
+            return (new Database('vagas'))->update('id = '.$this->id,[
+                                                    'titulo'    => $this->titulo,
+                                                    'descricao' => $this->descricao,
+                                                    'ativo'     => $this->ativo,
+                                                      'data'      => $this->data
+            ]);
+        }
 
         /** 
          * Métodos responsável por obter as vagas do bando de dados 
@@ -56,7 +67,7 @@ Class Vaga{
          */
         public static function getVaga($id){
             return (new Database('vagas'))->select(' id = ' .$id)
-                                          -> fetchObject(self::class)  ;
+                                          ->fetchObject(self::class)  ;
         }
 
     }

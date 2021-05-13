@@ -1,8 +1,8 @@
 <?php
     require __DIR__.'/vendor/autoload.php'; // para chamar nossas classess
-        use \App\Entity\Vaga ;
+        define ('TITLE','Cadastrar vaga');   
+            use \App\Entity\Vaga ;
 
-        // echo "<pre>"; print_r($_POST); echo "</pre>"; exit; // "exit" nao chama os metodods a baixo 
     //   VALIDAÇÃO DO POST
         if(isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])){
            $obVaga = new Vaga ; //Criar uma nova vaga !!

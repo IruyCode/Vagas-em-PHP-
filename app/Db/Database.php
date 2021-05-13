@@ -85,6 +85,18 @@ Class Database {
                 $query = 'SELECT '.$fields.' FROM '. $this->table.' '.$where. ' '.$order.' '.$limit ;
                     return $this->execute($query);
             }
+            /** Método responsável por executar atualizações no banco de dados  */
+            public function update($where,$values){
+                // DADOS DA QUERY  
+                $fields = array_keys($values);
 
+                // Monta QUERY
+                $query = 'UPDATE'.$this->table.' SET'.implode('=?,',$fields).' =? WHERE ' .$where;
+        
+                // EXECUTAR A QUERY 
+                $this->execute($query,array_values($values)); 
+                
+                return true;
+            }
     }
 ?>
