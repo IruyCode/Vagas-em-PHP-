@@ -26,6 +26,6 @@
         exit;
     }
   
-    include __DIR__.'/includes/header.php';
+    include __DIR__.'/includes/hearder.php';
     include __DIR__.'/includes/confirmar-exclusao.php';
     include __DIR__.'/includes/footer.php';
