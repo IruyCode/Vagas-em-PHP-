@@ -1,4 +1,17 @@
 <?php
+        $mensagem ='';
+    if(isset($_GET['status'])){
+        switch($_GET['status']){
+            case 'success':
+                $mensagem = '<div class="alert alert-success">Ação executado com sucesso!</div>';
+                break;
+            
+            case 'error':
+                $mensagem = '<div class="alert alert-danger">Ação não executado </div>';
+
+        }
+    }
+
     $resultados = '';
     foreach($vagas as $vaga){
         $resultados .='<tr>
