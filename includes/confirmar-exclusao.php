@@ -1,11 +1,11 @@
 <main>
     
-        <h2 class= "mt-3">Excluir Vaga</h2>
+        <h2 class="mt-3">Excluir vaga</h2>
 
-            <form method= "post">
+            <form method="post">
             
                 <div class="form-group">
-                   <p>Você deseja realmente excluir a vaga<strong><?=$obVaga->titulo?></strong> </p>
+                   <p>Você deseja realmente excluir a vaga <strong><?=$obVaga->titulo?></strong>?</p>
                 </div>
                         
                 <div class="form-group">
@@ -17,4 +17,4 @@
                 </div>
          
             </form>
-</main>
+        </main>

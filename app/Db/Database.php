@@ -1,11 +1,12 @@
 <?php
 
-
 namespace App\Db;
-use \PDO ;
-use PDOException;
 
-Class Database {
+use \PDO;
+use \PDOException;
+
+    class Database{
+
         // *** Conexao com o banco de dados ***
         const HOST = 'Localhost';
         // *NOME DO BANCO DE DADOS **
@@ -21,24 +22,27 @@ Class Database {
         // Instancia de conexão com o banco de dados 
         private $connection; //PDO FACIL DE MUDAR DE BD
 
-        public function __construct($table = null)
-        {
-            $this->table = $table ;
+        /**
+        * Define a tabela e instancia e conexão
+        * @param string $table
+        */
+        public function __construct($table = null){
+            $this->table = $table;
             $this->setConnection();
         }
             // Método responsavel por criar a conexao com o banco de dados 
         private function setConnection(){
             try{
-                $this->connection = new PDO('mysql:host='.self::HOST.';dbname=' .self::NAME,self::USER,self::PASS);
+                $this->connection = new PDO('mysql:host='.self::HOST.';dbname='.self::NAME,self::USER,self::PASS);
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             }catch(PDOException $e){
-                die('ERROR:'.$e->getMessage());
+                die('ERROR: '.$e->getMessage());
             }
         }
          /**  
              * Metodo responsal por executar querys, dentro do banco de baods 
              * @param string $query
-             * @return array $params
+             * @param array $params
              * @return PDOStatement
              */
             public function execute($query,$params = []){
@@ -47,7 +51,7 @@ Class Database {
                     $statement->execute($params);
                     return $statement;
                 }catch(PDOException $e){
-                die('ERROR:'.$e->getMessage());
+                die('ERROR: '.$e->getMessage());
             }
             }
 
@@ -59,10 +63,10 @@ Class Database {
         public function insert($values){
             // DADOS DA QUERY
             $fields = array_keys($values);
-            $binds = array_pad([],count($fields),'?');
+            $binds  = array_pad([],count($fields),'?');
             // print_r($fields); exit ;
             // MONTAR QUERY 
-                $query = 'INSERT INTO ' .$this->table. '('.implode(',',$fields).') Values ('.implode(',',$binds).')'; //"teste","teste2","s","2020-08-18 00:00:00:"
+                $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).')'; //"teste","teste2","s","2020-08-18 00:00:00:"
                     // EXECUTA O INSERT
                 $this->execute($query,array_values($values));
                 // RETORNA O ID INSERIDO 
@@ -75,14 +79,14 @@ Class Database {
          * @param string $fields
          * @return PDOStatement 
              */
-            public function select ($where =null, $order = null, $limit = null,$fields = '*'){
+            public function select($where = null, $order = null, $limit = null, $fields = '*'){
                 // DADOS DA QUERY 
-                $where = strlen($where)? 'WHERE'.$where : '';
-                $order = strlen($order)? 'ORDER BY '.$order : '';
-                $limit = strlen($limit)? 'LIMIT'.$limit : '';
+                $where = strlen($where) ? 'WHERE '.$where : '';
+                $order = strlen($order) ? 'ORDER BY '.$order : '';
+                $limit = strlen($limit) ? 'LIMIT '.$limit : '';
 
-                // MONTA A QUERY 
-                $query = 'SELECT '.$fields.' FROM '. $this->table.' '.$where. ' '.$order.' '.$limit ;
+                //MONTA A QUERY 
+                $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
                     return $this->execute($query);
             }
             /** Método responsável por executar atualizações no banco de dados  */
@@ -91,7 +95,7 @@ Class Database {
                 $fields = array_keys($values);
 
                 // Monta QUERY
-                $query = 'UPDATE'.$this->table.' SET'.implode('=?,',$fields).' =? WHERE ' .$where;
+                $query = 'UPDATE '.$this->table.' SET '.implode('=?,',$fields).'=? WHERE '.$where;
         
                 // EXECUTAR A QUERY 
                 $this->execute($query,array_values($values)); 
@@ -105,13 +109,13 @@ Class Database {
              */
             public function delete($where){
                 // MONTA A QUERY 
-                $query = 'DELETE FROM vagas WHERE '.$this->table.' WHERE '.$where;
+                $query = 'DELETE FROM '.$this->table.' WHERE '.$where;
 
                 // EXECUTA A QUERY 
                 $this->execute($query);
 
                 // RETORNA SUCESSO 
-                return true ;
+                return true;
             }
     }
 ?>

@@ -1,42 +1,36 @@
 <?php
-    require __DIR__.'/vendor/autoload.php'; // para chamar  ssas classess
+  // para chamar  ssas classess
+    require __DIR__.'/vendor/autoload.php'; 
 
-    define('TITLE','Cadastrar vaga'); 
+    define('TITLE','Editar vaga'); 
     use \App\Entity\Vaga;
 
-    // VALIDACAO DO ID 
+    //VALIDAÇÃO DO ID 
     if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
         header('location: index.php?status=error');
         exit;
     }
-    // CONSULTA VAGA 
+    //CONSULTA A VAGA 
     $obVaga = Vaga::getVaga($_GET['id']);
     
     // VALIDACAO DA VAGA
-    if(!$obVaga instanceof Vaga ){
+    if(!$obVaga instanceof Vaga){
         header('location: index.php?status=error'); 
         exit;
     }
         
-
     // VALIDACAO DO POST 
     if(isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])){
 
         $obVaga->titulo    = $_POST['titulo'];
         $obVaga->descricao = $_POST['descricao'];
-        $obVaga->ativo = $_POST['ativo'];
+        $obVaga->ativo     = $_POST['ativo'];
         $obVaga->atualizar();
 
-        // $obVaga->cadastrar();
-
-        header('localtion: index.php/status=sucess');
+        header('location: index.php?status=success');
         exit;
     }
-    $vagas = Vaga::getVagas();
 
-    include __DIR__.'/includes/hearder.php';
+    include __DIR__.'/includes/header.php';
     include __DIR__.'/includes/formulario.php';
     include __DIR__.'/includes/footer.php';
-
-    
-?>

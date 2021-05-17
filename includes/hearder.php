@@ -12,10 +12,10 @@
   </head>
   <body class="bg-dark text-light">
     
-    <div class ="container">
+    <div class="container">
         <div class="jumbotron bg-danger">
             <h1>Vz,Vagas</h1>
-            <p>Exemplo de CRUD com php orientados a objectos</p>
+            <p>Exemplo de CRUD com PHP orientados a objetos</p>
         </div>
 
 
