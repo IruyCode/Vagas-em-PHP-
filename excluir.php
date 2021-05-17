@@ -1,7 +1,6 @@
 <?php
     require __DIR__.'/vendor/autoload.php'; // para chamar  ssas classess
 
-    define('TITLE','Cadastrar vaga'); 
     use \App\Entity\Vaga;
 
     // VALIDACAO DO ID 
@@ -18,24 +17,14 @@
         exit;
     }
         
-
     // VALIDACAO DO POST 
-    if(isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])){
-
-        $obVaga->titulo    = $_POST['titulo'];
-        $obVaga->descricao = $_POST['descricao'];
-        $obVaga->ativo = $_POST['ativo'];
-        $obVaga->atualizar();
-
-        // $obVaga->cadastrar();
-
-        header('localtion: index.php/status=sucess');
-        exit;
+    if(isset($_POST['excluir'])){
+        $obVaga->excluir();
     }
     $vagas = Vaga::getVagas();
 
     include __DIR__.'/includes/hearder.php';
-    include __DIR__.'/includes/listagem.php';
+    include __DIR__.'/includes/confirmar-exclusao.php';
     include __DIR__.'/includes/footer.php';
 
     

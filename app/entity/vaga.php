@@ -48,6 +48,12 @@ Class Vaga{
                                                       'data'      => $this->data
             ]);
         }
+        /** Método responsável por excluir a vaga do banco 
+         * @return boolean
+         */
+        public function excluir(){
+            return (new Database('vagas'))->delete(' id = '.$this->id);
+        }
 
         /** 
          * Métodos responsável por obter as vagas do bando de dados 

@@ -96,7 +96,22 @@ Class Database {
                 // EXECUTAR A QUERY 
                 $this->execute($query,array_values($values)); 
                 
+                // RETURNA SUCESSO 
                 return true;
+            }
+            /**  MÈtodo responsável por excluir dados do Banco  
+             * @param string 
+             * @return boolean
+             */
+            public function delete($where){
+                // MONTA A QUERY 
+                $query = 'DELETE FROM vagas WHERE '.$this->table.' WHERE '.$where;
+
+                // EXECUTA A QUERY 
+                $this->execute($query);
+
+                // RETORNA SUCESSO 
+                return true ;
             }
     }
 ?>
