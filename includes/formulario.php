@@ -17,20 +17,19 @@
                     <label>Descrição</label>
                     <textarea class="form-control" name="descricao" rows="5"><?=$obVaga->descricao?></textarea>
                 </div>
-
                 <div class="form-group">
                     <label>Status</label>
 
                         <div>
                             <div class="form-check form-check-inline">
                                 <label class="form-control">
-                                    <input type="radio" name="ativo" value="s" checked> Ativo
+                                    <input type="radio" name="ativo" value="S" checked> Ativo
                                 </label>
                             </div>
 
                             <div class="form-check form-check-inline">
                                 <label class="form-control">
-                                    <input type="radio" name="ativo" value="n" <?=$obVaga->ativo == 'n' ? 'checked' : ''?>> Inativo
+                                    <input type="radio" name="ativo" value="N" <?=$obVaga->ativo == 'n' ? 'checked' : ''?>> Inativo
                                 </label>
                             </div>
                         </div>
